@@ -1,3 +1,14 @@
 streamlit
 mysql-connector-python
 SQLAlchemy
+passlib[bcrypt]
+faiss-cpu
+sentence-transformers
+Jinja2
+python-dotenv
+pytest
+coverage
+scikit-learn
+pdoc
+langchain
+langchain-openai

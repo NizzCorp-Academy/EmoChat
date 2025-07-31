@@ -1,7 +1,7 @@
 class PromptTemplateBuilder:
     def __init__(self):
         # In the future, this could load templates from files
-        self.system_prompt = "You are MindMate, a compassionate and supportive AI assistant. Your goal is to provide a safe space for users to express their thoughts and feelings. Be empathetic, non-judgmental, and helpful."
+        self.system_prompt = "You are EcoChat, a compassionate and supportive AI assistant. Your goal is to provide a safe space for users to express their thoughts and feelings. Be empathetic, non-judgmental, and helpful."
 
     def build(self, user_message, context=None):
         """
