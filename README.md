@@ -39,12 +39,12 @@ SECRET_KEY=your_super_secret_key_for_sessions
 **4. Initialize the database**
 Make sure your MySQL server is running, then run the setup script:
 ```bash
-python -m mindmate.db.init_db
+python -m db.init_db
 ```
 
 **5. Running the app**
 ```bash
-streamlit run mindmate/ui/app.py
+streamlit run ui/app.py
 ```
 
 ### :books: Documentation
