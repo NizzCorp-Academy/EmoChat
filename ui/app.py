@@ -4,7 +4,7 @@ import streamlit as st
 
 # Add the project root directory to the Python path
 # This ensures that the 'mindmate' package can be found
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
@@ -22,7 +22,7 @@ initialize_database()
 
 def render_login_page():
     """Renders the login and registration forms."""
-    st.title("Welcome to MindMate")
+    st.title("Welcome to EmoChat.ai")
     st.write("Your personal mental health companion.")
 
     db_session = next(get_db())
@@ -60,7 +60,7 @@ def render_login_page():
 
 def render_chat_page():
     """Renders the main chat interface, sidebar, and logout button."""
-    st.title("MindMate Chat")
+    st.title("EmoChat.ai")
 
     # --- Sidebar for Chat History and Logout ---
     with st.sidebar:
@@ -77,8 +77,20 @@ def render_chat_page():
         st.markdown("---")  # Separator line
         
         st.subheader("Chat History")
-        # Placeholder for chat history - this will be replaced with actual chat history
-        st.write("Your past conversations will appear here.")
+        chat_history = st.session_state.chat_logger.get_chat_history(st.session_state.user.id)
+        
+        # --- Display Chat History ---
+        for chat in chat_history:
+            with st.container():
+                if st.button(f"📜 {chat.prompt[:30]}...", key=f"ch_{chat.id}", use_container_width=True):
+                    # When a historical chat is clicked, load its messages
+                    st.session_state.messages = [
+                        {"role": "user", "content": chat.prompt},
+                        {"role": "assistant", "content": chat.response}
+                    ]
+                    if 'last_log_id' in st.session_state:
+                        del st.session_state['last_log_id']
+                    st.rerun()
         
         # Add some space to push logout button to bottom
         st.write("")
@@ -92,19 +104,6 @@ def render_chat_page():
 
     # --- Main Chat Interface ---
     db_session = next(get_db())
-    # Initialize chat components if they don't exist
-    if 'llm_client' not in st.session_state:
-        st.session_state.llm_client = LLMClient()
-    if 'prompt_builder' not in st.session_state:
-        st.session_state.prompt_builder = PromptTemplateBuilder()
-    if 'rag_manager' not in st.session_state:
-        st.session_state.rag_manager = RAGManager(db_session)
-    if 'guardrails_manager' not in st.session_state:
-        st.session_state.guardrails_manager = GuardrailsManager()
-    if 'chat_logger' not in st.session_state:
-        st.session_state.chat_logger = ChatLogger(db_session)
-    if 'feedback_handler' not in st.session_state:
-        st.session_state.feedback_handler = FeedbackHandler(db_session)
 
     # Initialize chat message history
     if "messages" not in st.session_state:
@@ -169,6 +168,20 @@ def main():
     if 'user' not in st.session_state or st.session_state.user is None:
         render_login_page()
     else:
+        db_session = next(get_db())
+        # Initialize chat components if they don't exist
+        if 'llm_client' not in st.session_state:
+            st.session_state.llm_client = LLMClient()
+        if 'prompt_builder' not in st.session_state:
+            st.session_state.prompt_builder = PromptTemplateBuilder()
+        if 'rag_manager' not in st.session_state:
+            st.session_state.rag_manager = RAGManager(db_session)
+        if 'guardrails_manager' not in st.session_state:
+            st.session_state.guardrails_manager = GuardrailsManager()
+        if 'chat_logger' not in st.session_state:
+            st.session_state.chat_logger = ChatLogger(db_session)
+        if 'feedback_handler' not in st.session_state:
+            st.session_state.feedback_handler = FeedbackHandler(db_session)
         render_chat_page()
 
 if __name__ == "__main__":

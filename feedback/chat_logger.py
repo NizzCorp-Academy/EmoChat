@@ -1,4 +1,6 @@
 from db.models import ChatLog
+from sqlalchemy import desc
+
 class ChatLogger:
     def __init__(self, db_session):
         self.db = db_session
@@ -16,6 +18,12 @@ class ChatLogger:
         self.db.commit()
         self.db.refresh(db_log)
         return db_log
+
+    def get_chat_history(self, user_id):
+        """
+        Retrieves the chat history for a given user.
+        """
+        return self.db.query(ChatLog).filter_by(user_id=user_id).order_by(ChatLog.timestamp.asc()).all()
 # Example usage:
 if __name__ == '__main__':
     from db.connector import get_db
