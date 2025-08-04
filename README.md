@@ -1,4 +1,3 @@
-# EmoChat
 
 EmoChat is an intelligent and empathetic mental health chatbot designed to provide a safe and supportive space for users. Fine-tuned for handling sensitive conversations, EmoChat delivers fast, accurate, and human-like responses, leveraging a private, local AI model to ensure user data never leaves their machine.
 
@@ -12,6 +11,7 @@ EmoChat is an intelligent and empathetic mental health chatbot designed to provi
 | Model      | Fine-tuned GGUF Model (via LM Studio)            |
 | Deployment | [Docker](https://www.docker.com/) (Planned)      |
 ---
+
 ### :zap: Quick Setup
 **1. Clone the repo**
 ```bash
@@ -20,8 +20,8 @@ git clone https://github.com/NizzCorp-Academy/EmoChat.git
 ```bash
 pip install -r requirements.txt
 ```
-**3. Set up the `.env` file**
 
+**3. Set up the `.env` file**
 Create a `.env` file in the project root and add the following variables:
 ```env
 # Database Configuration
@@ -35,27 +35,35 @@ LM_STUDIO_API_URL=http://localhost:1234/v1
 # Streamlit App Secret Key
 SECRET_KEY=your_super_secret_key_for_sessions
 ```
+
 **4. Initialize the database**
 Make sure your MySQL server is running, then run the setup script:
 ```bash
 python -m mindmate.db.init_db
 ```
+
 **5. Running the app**
 ```bash
 streamlit run mindmate/ui/app.py
 ```
+
+### :books: Documentation
+To view the project documentation, open the `docs/index.html` file in your web browser, or run the following command from the project root:
+```bash
+start docs/index.html
+```
+
 ### :busts_in_silhouette: TEAM MEMBERS
 - Arshad Ibrahim ([@arshad-v](https://github.com/arshad-v))
 - Shuaib Backer ([@shuaibbacker](https://github.com/shuaibbacker))
 - Adhil .T ([@adiltkt](https://github.com/adiltkt))
 ---
+
 ### :male-teacher: Acknowledgements
 - Ujwal ([@UjwalNizzCorp](https://github.com/UjwalNizzCorp))
 ---
+
 ### :page_facing_up: License & Usage
-
 All projects in this repository are intended for educational and demonstration purposes only. Use or reuse of any code, design, or documentation must be done with proper attribution.
-
 Please respect the intellectual efforts of all contributors.
-
 ---
