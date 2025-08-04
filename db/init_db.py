@@ -1,5 +1,7 @@
-from .connector import create_tables
+from .connector import initialize_database
+def main():
+    print("Initializing database...")
+    initialize_database()
+    # The success message is now printed inside initialize_database()
 if __name__ == "__main__":
-    print("Creating database tables...")
-    create_tables()
-    print("Tables created successfully.")
+    main()
