@@ -1,13 +1,38 @@
+"""
+Module: retriever_sql
+Author: Shuaib
+Date: 29-07-2025
+Purpose: To retrieve knowledge base articles from the database.
+"""
 import sys
 import os
 from sqlalchemy import or_
 from db.models import KnowledgeBase
 class SQLRetriever:
+    """
+    Class: SQLRetriever
+    Author: Shuaib
+    Date: 29-07-2025
+    Purpose: To retrieve knowledge base articles from the database.
+    """
     def __init__(self, db_session):
+        """
+        Function: __init__
+        Author: Shuaib
+        Date: 29-07-2025
+        Purpose: To initialize the SQLRetriever.
+        Params: db_session
+        Returns: None
+        """
         self.db = db_session
     def retrieve(self, query: str, top_k: int = 5):
         """
-        Retrieves knowledge base articles by searching for keywords in the title or tags.
+        Function: retrieve
+        Author: Shuaib
+        Date: 29-07-2025
+        Purpose: To retrieve knowledge base articles by searching for keywords in the title or tags.
+        Params: str query, int top_k
+        Returns: list
         """
         search_term = f"%{query}%"
         results = (

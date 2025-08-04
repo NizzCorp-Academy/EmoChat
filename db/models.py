@@ -1,9 +1,21 @@
+"""
+Module: models
+Author: Arshad
+Date: 26-07-2025
+Purpose: To define the database models.
+"""
 from sqlalchemy import Column, Integer, String, Text, DateTime, Float, ForeignKey, Boolean
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from db.connector import Base
 
 class User(Base):
+    """
+    Class: User
+    Author: Arshad
+    Date: 26-07-2025
+    Purpose: To define the User model.
+    """
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -16,6 +28,12 @@ class User(Base):
     feedback = relationship("Feedback", back_populates="user")
 
 class ChatLog(Base):
+    """
+    Class: ChatLog
+    Author: Arshad
+    Date: 26-07-2025
+    Purpose: To define the ChatLog model.
+    """
     __tablename__ = "chat_logs"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -29,6 +47,12 @@ class ChatLog(Base):
     feedback = relationship("Feedback", back_populates="chat_log")
 
 class Feedback(Base):
+    """
+    Class: Feedback
+    Author: Arshad
+    Date: 26-07-2025
+    Purpose: To define the Feedback model.
+    """
     __tablename__ = "feedback"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -42,6 +66,12 @@ class Feedback(Base):
     chat_log = relationship("ChatLog", back_populates="feedback")
 
 class KnowledgeBase(Base):
+    """
+    Class: KnowledgeBase
+    Author: Arshad
+    Date: 26-07-2025
+    Purpose: To define the KnowledgeBase model.
+    """
     __tablename__ = "knowledge_base"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -50,6 +80,12 @@ class KnowledgeBase(Base):
     tags = Column(String(255), nullable=True)
 
 class VectorIndex(Base):
+    """
+    Class: VectorIndex
+    Author: Arshad
+    Date: 26-07-2025
+    Purpose: To define the VectorIndex model.
+    """
     __tablename__ = "vector_index"
 
     vector_id = Column(String(255), primary_key=True, index=True)

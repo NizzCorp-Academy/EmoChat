@@ -1,3 +1,9 @@
+"""
+Module: 2_Evaluation_Dashboard
+Author: Arshad
+Date: 03-08-2025
+Purpose: To provide the evaluation dashboard page for the Streamlit UI.
+"""
 import streamlit as st
 from evaluation.evaluation_engine import EvaluationEngine
 from db.connector import get_db
@@ -8,6 +14,14 @@ st.set_page_config(
 )
 
 def main():
+    """
+    Function: main
+    Author: Arshad
+    Date: 03-08-2025
+    Purpose: Main function to control page rendering.
+    Params: None
+    Returns: None
+    """
     st.title("📊 Evaluation Dashboard")
 
     # Check for user authentication

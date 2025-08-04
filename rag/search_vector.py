@@ -1,24 +1,49 @@
+"""
+Module: search_vector
+Author: Shuaib
+Date: 01-08-2025
+Purpose: To provide a vector searcher for finding similar vectors.
+"""
 import faiss
 import numpy as np
 class VectorSearcher:
+    """
+    Class: VectorSearcher
+    Author: Shuaib
+    Date: 01-08-2025
+    Purpose: To provide a vector searcher for finding similar vectors.
+    """
     def __init__(self, dimension):
         """
-        Initializes the FAISS index.
-        :param dimension: The dimensionality of the vectors.
+        Function: __init__
+        Author: Shuaib
+        Date: 01-08-2025
+        Purpose: To initialize the FAISS index.
+        Params: int dimension
+        Returns: None
         """
         self.dimension = dimension
         self.index = faiss.IndexFlatL2(dimension)
     def create_index(self, embeddings):
         """
-        Adds a list of embeddings to the FAISS index.
+        Function: create_index
+        Author: Shuaib
+        Date: 01-08-2025
+        Purpose: To add a list of embeddings to the FAISS index.
+        Params: list embeddings
+        Returns: None
         """
         if not isinstance(embeddings, np.ndarray):
             embeddings = np.array(embeddings).astype('float32')
         self.index.add(embeddings)
     def search(self, query_embedding, top_k: int = 3):
         """
-        Searches the index for the top_k most similar vectors.
-        :return: A tuple of (distances, indices) of the nearest neighbors.
+        Function: search
+        Author: Shuaib
+        Date: 01-08-2025
+        Purpose: To search the index for the top_k most similar vectors.
+        Params: list query_embedding, int top_k
+        Returns: tuple
         """
         if not isinstance(query_embedding, np.ndarray):
             query_embedding = np.array([query_embedding]).astype('float32')

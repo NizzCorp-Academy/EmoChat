@@ -1,3 +1,9 @@
+"""
+Module: app
+Author: Arshad
+Date: 04-08-2025
+Purpose: The main application file for the Streamlit UI.
+"""
 import sys
 import os
 import streamlit as st
@@ -21,7 +27,14 @@ from feedback.feedback_handler import FeedbackHandler
 initialize_database()
 
 def render_login_page():
-    """Renders the login and registration forms."""
+    """
+    Function: render_login_page
+    Author: Arshad
+    Date: 04-08-2025
+    Purpose: To render the login and registration forms.
+    Params: None
+    Returns: None
+    """
     st.title("Welcome to EmoChat.ai")
     st.write("Your personal mental health companion.")
 
@@ -59,7 +72,14 @@ def render_login_page():
                     st.error("Registration failed. Email may already be in use.")
 
 def render_chat_page():
-    """Renders the main chat interface, sidebar, and logout button."""
+    """
+    Function: render_chat_page
+    Author: Arshad
+    Date: 04-08-2025
+    Purpose: To render the main chat interface, sidebar, and logout button.
+    Params: None
+    Returns: None
+    """
     st.title("EmoChat.ai")
 
     # --- Sidebar for Chat History and Logout ---
@@ -164,7 +184,14 @@ def render_chat_page():
             st.rerun()
 
 def main():
-    """Main function to control page rendering."""
+    """
+    Function: main
+    Author: Arshad
+    Date: 04-08-2025
+    Purpose: Main function to control page rendering.
+    Params: None
+    Returns: None
+    """
     if 'user' not in st.session_state or st.session_state.user is None:
         render_login_page()
     else:

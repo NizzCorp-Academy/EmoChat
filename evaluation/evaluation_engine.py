@@ -1,34 +1,74 @@
+"""
+Module: evaluation_engine
+Author: Shuaib
+Date: 03-08-2025
+Purpose: To provide an engine for evaluating the chatbot's performance.
+"""
 from sqlalchemy import func
 from db.models import Feedback, ChatLog
 
 class EvaluationEngine:
+    """
+    Class: EvaluationEngine
+    Author: Shuhaib
+    Date: 04-08-2025
+    Purpose: To provide an engine for evaluating the chatbot's performance.
+    """
     def __init__(self, db_session):
+        """
+        Function: __init__
+        Author: Shuhaib
+        Date: 04-08-2025
+        Purpose: To initialize the EvaluationEngine.
+        Params: db_session
+        Returns: None
+        """
         self.db = db_session
 
     def get_average_feedback_rating(self):
         """
-        Calculates the average feedback rating from the feedback table.
+        Function: get_average_feedback_rating
+        Author: Shuhaib
+        Date: 04-08-2025
+        Purpose: To calculate the average feedback rating from the feedback table.
+        Params: None
+        Returns: float
         """
         avg_rating = self.db.query(func.avg(Feedback.rating)).scalar()
         return avg_rating if avg_rating is not None else 0
 
     def get_risk_flag_count(self):
         """
-        Counts the number of interactions that triggered the safety guardrails.
+        Function: get_risk_flag_count
+        Author: Shuhaib
+        Date: 04-08-2025
+        Purpose: To count the number of interactions that triggered the safety guardrails.
+        Params: None
+        Returns: int
         """
         risk_count = self.db.query(func.count(ChatLog.id)).filter(ChatLog.risk_flag == True).scalar()
         return risk_count
 
     def get_total_interactions(self):
         """
-        Counts the total number of logged interactions.
+        Function: get_total_interactions
+        Author: Shuhaib
+        Date: 04-08-2025
+        Purpose: To count the total number of logged interactions.
+        Params: None
+        Returns: int
         """
         total_interactions = self.db.query(func.count(ChatLog.id)).scalar()
         return total_interactions
 
     def run_evaluation(self):
         """
-        Runs all evaluation metrics and returns a summary report.
+        Function: run_evaluation
+        Author: Shuhaib
+        Date: 04-08-2025
+        Purpose: To run all evaluation metrics and return a summary report.
+        Params: None
+        Returns: dict
         """
         avg_rating = self.get_average_feedback_rating()
         risk_count = self.get_risk_flag_count()

@@ -1,10 +1,35 @@
+"""
+Module: feedback_handler
+Author: Arshad
+Date: 29-07-2025
+Purpose: To handle user feedback.
+"""
 from db.models import Feedback
 class FeedbackHandler:
+    """
+    Class: FeedbackHandler
+    Author: Arshad
+    Date: 29-07-2025
+    Purpose: To handle user feedback.
+    """
     def __init__(self, db_session):
+        """
+        Function: __init__
+        Author: Arshad
+        Date: 029-07-2025
+        Purpose: To initialize the FeedbackHandler.
+        Params: db_session
+        Returns: None
+        """
         self.db = db_session
     def save_feedback(self, user_id, chat_log_id, rating, comment):
         """
-        Saves user feedback to the database.
+        Function: save_feedback
+        Author: Arshad
+        Date: 29-07-2025
+        Purpose: To save user feedback to the database.
+        Params: int user_id, int chat_log_id, int rating, str comment
+        Returns: Feedback
         """
         db_feedback = Feedback(
             user_id=user_id,

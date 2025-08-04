@@ -1,5 +1,25 @@
+"""
+Module: keyword_blocker
+Author: Adhil
+Date: 02-08-2025
+Purpose: To block text containing specific keywords.
+"""
 class KeywordBlocker:
+    """
+    Class: KeywordBlocker
+    Author: Adhil
+    Date: 02-08-2025
+    Purpose: To block text containing specific keywords.
+    """
     def __init__(self):
+        """
+        Function: __init__
+        Author: Adhil
+        Date: 02-08-2025
+        Purpose: To initialize the KeywordBlocker.
+        Params: None
+        Returns: None
+        """
         # This list should be expanded and stored in a more secure/configurable way
         self.blocked_keywords = [
             'suicide', 'self-harm', 'kill myself', 'i want to die',
@@ -8,8 +28,12 @@ class KeywordBlocker:
         ]
     def check_text(self, text: str):
         """
-        Checks if any blocked keywords are present in the text (case-insensitive).
-        Returns True if a blocked keyword is found, False otherwise.
+        Function: check_text
+        Author: Adhil
+        Date: 02-08-2025
+        Purpose: To check if any blocked keywords are present in the text (case-insensitive).
+        Params: str text
+        Returns: bool
         """
         lower_text = text.lower()
         for keyword in self.blocked_keywords:

@@ -1,12 +1,37 @@
+"""
+Module: chat_logger
+Author: Arshad
+Date: 30-07-2025
+Purpose: To log chat interactions to the database.
+"""
 from db.models import ChatLog
 from sqlalchemy import desc
 
 class ChatLogger:
+    """
+    Class: ChatLogger
+    Author: Arshad
+    Date: 30-07-2025
+    Purpose: To log chat interactions to the database.
+    """
     def __init__(self, db_session):
+        """
+        Function: __init__
+        Author: Arshad
+        Date: 30-07-2025
+        Purpose: To initialize the ChatLogger.
+        Params: db_session
+        Returns: None
+        """
         self.db = db_session
     def log_interaction(self, user_id, prompt, response, risk_flag=False):
         """
-        Logs a user-chatbot interaction to the database.
+        Function: log_interaction
+        Author: Arshad
+        Date: 30-07-2025
+        Purpose: To log a user-chatbot interaction to the database.
+        Params: int user_id, str prompt, str response, bool risk_flag
+        Returns: ChatLog
         """
         db_log = ChatLog(
             user_id=user_id,
@@ -21,7 +46,12 @@ class ChatLogger:
 
     def get_chat_history(self, user_id):
         """
-        Retrieves the chat history for a given user.
+        Function: get_chat_history
+        Author: Arshad
+        Date: 30-07-2025
+        Purpose: To retrieve the chat history for a given user.
+        Params: int user_id
+        Returns: list
         """
         return self.db.query(ChatLog).filter_by(user_id=user_id).order_by(ChatLog.timestamp.asc()).all()
 # Example usage:

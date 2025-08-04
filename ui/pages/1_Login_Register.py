@@ -1,8 +1,22 @@
+"""
+Module: 1_Login_Register
+Author: Arshad
+Date: 02-08-2025
+Purpose: To provide the login and registration page for the Streamlit UI.
+"""
 import streamlit as st
 from auth.auth_manager import AuthManager
 from db.connector import get_db
 
 def main():
+    """
+    Function: main
+    Author: Arshad
+    Date: 03-08-2025
+    Purpose: Main function to control page rendering.
+    Params: None
+    Returns: None
+    """
     st.title("Login / Register")
 
     if 'user' in st.session_state and st.session_state.user is not None:

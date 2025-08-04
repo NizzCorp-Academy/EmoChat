@@ -1,3 +1,9 @@
+"""
+Module: llm_client
+Author: Arshad
+Date: 27-07-2025
+Purpose: To provide a client for interacting with the Language Learning Model (LLM).
+"""
 import os
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
@@ -5,7 +11,21 @@ from langchain_openai import ChatOpenAI
 load_dotenv()
 
 class LLMClient:
+    """
+    Class: LLMClient
+    Author: Arshad
+    Date: 27-07-2025
+    Purpose: A client to interact with the Language Learning Model (LLM).
+    """
     def __init__(self):
+        """
+        Function: __init__
+        Author: Arshad
+        Date: 27-07-2025
+        Purpose: To initialize the LLMClient.
+        Params: None
+        Returns: None
+        """
         self.api_url = os.getenv("LM_STUDIO_API_URL")
         self.model_name = os.getenv("LM_STUDIO_MODEL_NAME")
         
@@ -21,13 +41,12 @@ class LLMClient:
 
     def get_response_stream(self, prompt_text):
         """
-        Gets a streaming response from the LLM for a single prompt.
-
-        Args:
-            prompt_text: The user's prompt as a string.
-
-        Returns:
-            An iterator of response string chunks.
+        Function: get_response_stream
+        Author: Arshad
+        Date: 27-07-2025
+        Purpose: To get a streaming response from the LLM.
+        Params: str prompt_text
+        Returns: An iterator of response string chunks.
         """
         try:
             # self.llm.stream returns AIMessageChunk objects.

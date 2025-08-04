@@ -1,3 +1,9 @@
+"""
+Module: connector
+Author: Shuaib
+Date: 26-07-2025
+Purpose: To provide a connector to the database.
+"""
 import os
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
@@ -20,8 +26,12 @@ Base = declarative_base()
 # --- Database Initialization and Dependency ---
 def initialize_database():
     """
-    Ensures the database and all tables exist before the app starts.
-    This is the single source of truth for DB setup.
+    Function: initialize_database
+    Author: Shuaib
+    Date: 26-07-2025
+    Purpose: To ensure the database and all tables exist before the app starts.
+    Params: None
+    Returns: None
     """
     try:
         # 1. Connect to the server, not a specific database
@@ -43,7 +53,14 @@ def initialize_database():
         print(f"An unexpected error occurred during DB initialization: {e}")
         raise
 def get_db():
-    """Dependency to get a DB session for each request."""
+    """
+    Function: get_db
+    Author: Shuaib
+    Date: 26-07-2025
+    Purpose: Dependency to get a DB session for each request.
+    Params: None
+    Returns: Session
+    """
     db = SessionLocal()
     try:
         yield db
