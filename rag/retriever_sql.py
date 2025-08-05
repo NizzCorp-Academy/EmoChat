@@ -6,6 +6,12 @@ Purpose: To retrieve knowledge base articles from the database.
 """
 import sys
 import os
+
+# Add the project root directory to the Python path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
 from sqlalchemy import or_
 from db.models import KnowledgeBase
 class SQLRetriever:
