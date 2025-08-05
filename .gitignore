@@ -16,3 +16,4 @@ env/
 .streamlit/
 # Log files
 *.log
+.pytest_cache
