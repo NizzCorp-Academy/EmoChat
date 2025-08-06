@@ -3,6 +3,7 @@ from unittest.mock import patch, MagicMock
 import os
 from prompt_builder import PromptTemplateBuilder
 
+
 # Patch ChatOpenAI before importing the module
 @patch.dict(os.environ, {
     "LM_STUDIO_API_URL": "http://localhost:1234",
@@ -27,7 +28,7 @@ def test_llm_client_missing_env_vars():
 
 @patch.dict(os.environ, {
     "LM_STUDIO_API_URL": "http://localhost:1234",
-    "LM_STUDIO_MODEL_NAME": "gpt-neo"
+    "LM_STUDIO_MODEL_NAME": "mental_health_fine-model-v1"
 })
 @patch("llm_client.ChatOpenAI")
 def test_llm_client_response_stream_success(mock_chat_openai):
@@ -58,9 +59,6 @@ def test_llm_client_response_stream_error(mock_chat_openai):
     client = LLMClient()
     response = list(client.get_response_stream([{"role": "user", "content": "Hi"}]))
     assert response == ["Sorry, I'm having trouble connecting to my brain right now."]
-
-import pytest
-from prompt_builder import PromptTemplateBuilder
 
 def test_prompt_builder_default_prompt():
     builder = PromptTemplateBuilder()
