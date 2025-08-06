@@ -1,0 +1,17 @@
+streamlit
+mysql-connector-python
+SQLAlchemy
+passlib
+bcrypt==3.2.2
+faiss-cpu
+sentence-transformers
+Jinja2
+python-dotenv
+pytest
+coverage
+scikit-learn
+pdoc
+langchain
+langchain-openai
+pymysql
+cryptography

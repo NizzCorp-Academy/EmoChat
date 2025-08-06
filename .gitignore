@@ -1,0 +1,19 @@
+# Environment variables
+.env
+.venv
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+# Virtual environment
+.venv/
+venv/
+env/
+# IDE-specific files
+.vscode/
+.idea/
+# Streamlit specific
+.streamlit/
+# Log files
+*.log
+.pytest_cache
