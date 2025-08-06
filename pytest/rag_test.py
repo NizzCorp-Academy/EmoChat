@@ -15,9 +15,7 @@ def test_embedder_embedding_output():
     assert len(embeddings) == 2
     assert all(isinstance(e, list) or hasattr(e, '__len__') for e in embeddings)
 
-import numpy as np
-from rag.search_vector import VectorSearcher
-from rag.embedder import Embedder
+
 
 def test_vector_search_basic_functionality():
     embedder = Embedder()
@@ -33,9 +31,7 @@ def test_vector_search_basic_functionality():
     assert distances.shape == (1, 2)
     assert indices.shape == (1, 2)
 
-from rag.retriever_sql import SQLRetriever
-from db.models import KnowledgeBase
-from unittest.mock import MagicMock
+
 
 def test_sql_retriever_returns_expected_results():
     mock_session = MagicMock()
@@ -44,9 +40,7 @@ def test_sql_retriever_returns_expected_results():
 
     assert mock_session.query.called
 
-from rag.rag_manager import RAGManager
-from rag.embedder import Embedder
-from unittest.mock import MagicMock, patch
+
 
 @patch("rag.rag_manager.faiss.read_index")
 def test_rag_manager_context_retrieval(mock_read_index):
