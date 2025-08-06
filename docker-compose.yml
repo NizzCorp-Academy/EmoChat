@@ -3,7 +3,7 @@ services:
     container_name: emochat_app
     build: .
     ports:
-      - "8501:8501"
+      - "8501"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
