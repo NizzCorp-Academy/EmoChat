@@ -45,7 +45,7 @@ start docs/index.html
 - Shuaib Backer ([@shuaibbacker](https://github.com/shuaibbacker))
 - Adhil .T ([@adiltkt](https://github.com/adiltkt))
 ---
-### : Acknowledgements
+### Acknowledgements
 - Ujwal ([@UjwalNizzCorp](https://github.com/UjwalNizzCorp))
 ---
 ### :page_facing_up: License & Usage
